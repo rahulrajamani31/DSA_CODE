@@ -29,6 +29,10 @@ public class BinaryTree {
         }
     }
 
+
+    //BELOW WILL THE RECURSIVE METHODS FOR TRAVERSALS
+
+
     public void inorder(Node root){
         if(root==null){
             return;
@@ -74,4 +78,77 @@ public class BinaryTree {
         }
 
     }
+
+
+    //BELOW WILL BE THE ITERATION METHOD FOR TRAVERSAL
+
+    public void inorder_iter(Node root){
+        Stack<Node> stk = new Stack<>();
+        Node curr = root;
+        while(true){
+          while(curr!=null){
+              stk.push(curr);
+              curr=curr.left;
+          }
+          if(stk.isEmpty()){
+              break;
+          }
+            System.out.print(stk.peek().data+"->");
+            curr = stk.peek().right;
+            stk.pop();
+        }
+    }
+
+
+    public void preorder_iter(Node root){
+        Stack<Node> stk = new Stack<>();
+        Node curr = root;
+        while(true){
+            while(curr!=null){
+                stk.push(curr);
+                System.out.print(curr.data+"->");
+                curr=curr.left;
+            }
+            if(stk.isEmpty()){
+                break;
+            }
+
+            curr = stk.peek().right;
+            stk.pop();
+        }
+    }
+
+    public void postorder_iter(Node root){
+        Stack<Node> stk = new Stack<>();
+        Stack<Node>stk2 =new Stack<>();
+        Node curr = root;
+        while(true){
+            while(curr!=null){
+                stk.push(curr);
+                curr=curr.left;
+            }
+            if(stk.isEmpty()){
+                break;
+            }
+            if(stk.peek().right!=null){
+               curr=stk.peek().right;
+               stk2.push(stk.peek());
+               stk.pop();
+
+
+            }
+            else{
+                System.out.print(stk.peek().data+"->");
+                stk.pop();
+                while(!stk2.isEmpty()){
+                    System.out.print(stk2.peek().data+"->");
+                    stk2.pop();
+                }
+
+
+            }
+        }
+    }
+
+
 }
