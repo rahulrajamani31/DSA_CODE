@@ -32,7 +32,7 @@ public class ArrayList2D {
         // Append values to R1, but start appending from C3 which Starts from C0
         flag.get(1).addAll(3, Arrays.asList(22, 1000));
 
-        System.out.println(flag);
+        System.out.println(flag.get(0).get(1));
 
 
         //Return type is List
